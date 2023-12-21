@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Student>
+
+<a asp-action="Create" class="btn btn-primary">Thêm sinh viên</a>
+<br />
+<input type="text" name="search"/>
+<a asp-action="Search" class="btn btn-primary">Search</a>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th width="5%">Id</th>
+            <th>MSSV</th>
+            <th width="8%">Họ tên</th>
+            <th>Ngày sinh</th>
+            <th>Quê quán</th>
+            <th>Điểm toán </th>
+            <th>Điểm lý </th>
+            <th>Điểm hóa </th>
+            <th>Điểm TB </th>
+            <th>Lớp</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.Id</td>
+                <td>@items.Code</td>
+                <td>@items.FullName</td>
+                <td>@items.DateOfBirth</td>
+                <td>@items.Address</td>
+                <td>@items.MathPoints</td>
+                <td>@items.PhysicsPoints</td>
+                <td>@items.ChemistryPoints</td>
+                <td>@items.MediumPoints</td>
+                <td>@items.Classroom.Name</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@items.Id" class="btn btn-info">Chi tiết</a>
+                    <a asp-action="Deletes" asp-route-id="@items.Id" class="btn btn-danger">Xóa</a>
+                    <a asp-action="Edits" asp-route-id="@items.Id" class="btn btn-warning">Sửa</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="StudentsBean">Sinh viên đậu</a>
+<a asp-action="StudentsB">Sinh Viên Đậu Theo Từng môn</a>
+<a asp-action="StudentsC">Sinh Viên Có điểm 10</a>

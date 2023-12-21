@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Product>
+
+<a asp-action="Create" class="btn btn-outline-primary pd-3">Add product</a>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>SKU</th>
+            <th>Name</th>
+            <th>Descreiption</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>ProductTypeId</th>
+            <th>Image</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var items in Model)
+            {
+                <tr>
+                    <td>@items.Id</td>
+                    <td>@items.SKU</td>
+                    <td>@items.Name</td>
+                    <td>@items.Description</td>
+                    <td>@items.Price</td>
+                    <td>@items.Stock</td>
+                    <td>@items.ProductTypeId</td>
+                    <td>@items.Image</td>
+                    <td>@items.Status</td>
+                </tr>
+            }
+    </tbody>
+</table>

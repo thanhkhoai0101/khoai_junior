@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+    <title>Danh Sách Lớp Học</title>
+</head>
+<body>
+    <div class="container-fluid" ng-app="myApp" ng-controller="classroomCtrl">
+        <div class="row mt-2">
+            <div class="col-md">
+                <a href="Create.html" class="btn btn-success mb-2">Thêm lớp</a>
+            </div>
+            <div class="col-md text-right">
+                Tìm kiếm
+                <input type="text" ng-model="searchKeyword">
+            </div>
+        </div>
+        <table class="table table-light">
+            <thead class="table-dark">
+                <tr>
+                    <th ng-click="setCol('Id')">Id</th>
+                    <th ng-click="setCol('Name')">Tên Lớp</th>
+                    <th ng-click="setCol('Course')">Khóa Học</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in classroom | filter: searchKeyword | orderBy: orderCol : reverse">
+                    <td>{{item.Id}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Course}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script>
+        var app = angular.module("myApp",[]);
+        app.controller("classroomCtrl",function ($scope, $http){
+            $http.get("https://localhost:7137/api/Classrooms")
+                .then(response=>$scope.classrooms=response.data);
+            $scope.delete = (id,name)=>{
+                if (confirm('Bạn có chắc muốn xóa lớp '+name+' ?')){
+                    $http.delete("https://localhost:7137/Classrooms/"+id)
+                        .then(response=>{
+                            var i = $scope.classrooms.findIndex(p => p.id == id);
+                            $scope.classrooms.splice(i,1);
+                        });
+                }
+            }
+            $scope.orderCol = "id";
+            $scope.reverse = false;
+            $scope.setCol = x =>{
+                if ($scope.orderCol == x){
+                    $scope.reverse = !$scope.reverse;
+                }
+                else {
+                    $scope.orderCol = x;
+                    $scope.reverse = false;
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

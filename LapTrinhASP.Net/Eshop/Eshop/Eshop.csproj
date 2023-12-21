@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Data\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Views\Frontend\" />
+    <None Remove="Views\Frontend\Abouts\" />
+    <None Remove="Views\Frontend\Contacts\" />
+    <None Remove="Views\Frontend\Products\" />
+    <None Remove="Views\Shared\" />
+    <None Remove="Views\Backend\" />
+    <None Remove="Views\Backend\Products\" />
+    <None Remove="Controllers\Backend\" />
+    <None Remove="Views\Users\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Views\Frontend\" />
+    <Folder Include="Views\Frontend\Abouts\" />
+    <Folder Include="Views\Frontend\Contacts\" />
+    <Folder Include="Views\Frontend\Products\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Backend\" />
+    <Folder Include="Views\Backend\Products\" />
+    <Folder Include="Controllers\Backend\" />
+    <Folder Include="Views\Users\" />
+  </ItemGroup>
+</Project>

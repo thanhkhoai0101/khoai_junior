@@ -1,0 +1,69 @@
+﻿@model Student
+
+<h1>Thông tin sinh viên @Model.FullName</h1>
+<form>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="Id"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.Id">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="Code"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.Code">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="FullName"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.FullName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="DateOfBirth"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.DateOfBirth">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="Address"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.Address">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="MathPoints"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.MathPoints">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="PhysicsPoints"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.PhysicsPoints">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="ChemistryPoints"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.ChemistryPoints">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="MediumPoints"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.MediumPoints">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" asp-for="Classroom.Name"></label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" value="@Model.Classroom.Name">
+        </div>
+    </div>
+
+    <a class="btn btn-danger" asp-action="Edits" asp-route-id="@Model.Id">Chỉnh sửa</a>
+
+</form>
+<a asp-action="Index">&lsaquo;Quay lại</a>
